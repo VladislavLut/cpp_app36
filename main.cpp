@@ -2,56 +2,28 @@
 
 using namespace std;
 
-float add(float a, float b) {
-    return a + b;
-}
+void sumArrays(int* A, int* B, int* C, int size) {
+	for (int i = 0; i < size; ++i) {
+		C[i] = A[i] + B[i];
 
-float subtract(float a, float b) {
-    return a - b;
-}
-
-float multiply(float a, float b) {
-    return a * b;
-}
-
-float divide(float a, float b) {
-    if (b != 0) {
-        return a / b;
-    }
-    else {
-        cout << "Enter the first number:" << endl;
-        return 0;
-    }
+	}
 }
 
 int main() {
-    float (*operations[4])(float, float) = { add, subtract, multiply, divide };
+	const int size = 5;
 
-    int choice;
-    float num1, num2;
+	int arrayA[size] = { 3, 6, 9, 12, 15 };
+	int arrayB[size] = { 1, 2, 3, 4, };
+	int arrayC[size];
 
-    cout << "Enter the first number: ";
-    cin >> num1;
 
-    cout << "Enter the second number: ";
-    cin >> num2;
+	sumArrays(arrayA, arrayB, arrayC, size);
 
-    cout << "Select an operation:\n";
-    cout << "1.(+)\n";
-    cout << "2.(-)\n";
-    cout << "3.(*)\n";
-    cout << "4.(/)\n";
-    cout << "Your choice: ";
-    cin >> choice;
+	cout << "Array C (the sum of arrays A and B): ";
+	for (int i = 0; i < size; ++i) {
+		cout << arrayC[i] << " ";
+	}
+	cout << endl;
 
-    if (choice >= 1 && choice <= 4) {
-        
-        float result = operations[choice - 1](num1, num2);
-        cout << "Result: " << result << endl;
-    }
-    else {
-        cout << "Wrong choice of operation." << endl;
-    }
-
-    return 0;
+	return 0;
 }
